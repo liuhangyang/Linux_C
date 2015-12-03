@@ -10,15 +10,16 @@ int main(void)
 		case 0:
 			while(1)
 			{
-			    printf("A background process ,PID:%d,ParentID:%d\n",getpid(),getppid());
-		            sleep(3);
+				printf("A background process,PID:%d\n,parentID:%d\n",getpid(),getppid());
+				sleep(3);
 			}
 		case -1:
-			perror("Process creation failed");
+			perror("process creation failed!\n");
 			exit(-1);
 		default:
-			printf("I am parent process ,my pid is %d\n",getpid());
+			printf("I am parent process,my pid is %d\n",getpid());
 			exit(0);
 	}
 	return 0;
 }
+

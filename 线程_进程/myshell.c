@@ -214,7 +214,7 @@ void do_cmd(int argcount,char arglist[100][256])
 				for(j=i+1;arg[j]!=NULL;j++)
 					argnext[j-i-1]=arg[j];
 			}
-		//	argnext[j-i-1] = arg[j];
+			argnext[j-i-1] = arg[j];
 			break;
 		}
 	}
@@ -228,7 +228,7 @@ void do_cmd(int argcount,char arglist[100][256])
 		case 0:
 			/*pid为０说明是子进程，在子进程中执行输入的命令,输入的命令不包括<,>,|*/
 			if(pid == 0)
-				{
+			{
 				if(!(find_command(arg[0])))
 				{
 					printf("%s : command not found\n",arg[0]);

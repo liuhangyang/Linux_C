@@ -1,30 +1,28 @@
-/*exec 实例,这里使用execve函数*/
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
- 
+
 int main(int argc,char *argv[],char **environ)
 {
 	pid_t pid;
 	int stat_val;
-	printf("Exec example\n");
+	printf("Exec example!\n");
 	pid=fork();
 	switch(pid)
 	{
 		case -1:
-			perror("process Creation failed\n");
+			perror("Process Creation failed\n");
 			exit(1);
-		case 0:
+		case  0:
 			printf("Child process is running\n");
-			printf("My_pid=%d,parentpid=%d\n",getpid(),getppid());
-			printf("uid=%d,gid=%d\n",getuid(),getgid());
+			printf("My pid=%d,Parentpid =%d\n",getpid(),getppid());
 			execve("processimage",argv,environ);
-			printf("process never go to here!\n");
+			printf("Process never go to here\n");
 			exit(0);
 		default:
-			printf("Parents  process is running\n");
+			printf("Parent process is running!\n");
 			break;
 	}
-wait(&stat_val);
-exit(0);
+	wait(&stat_val);
+	exit(0);
 }
